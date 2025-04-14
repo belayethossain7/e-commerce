@@ -172,3 +172,12 @@ cython_debug/
 
 # PyPI configuration file
 .pypirc
+
+# me adding this
+# Django static/media file gulo
+/media/
+/staticfiles/
+
+# Secret config file
+.env
+local_settings.py
