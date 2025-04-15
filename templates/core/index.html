@@ -1,12 +1,175 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>{% block title %}Amar Mart{% endblock %}</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap">
+    <link rel="stylesheet" href="/static/css/style.css">
+    <style>
+        /* Include your CSS here or link to external stylesheet */
+        body {
+            font-family: 'Roboto', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f8f9fa;
+        }
+        header, nav, main, footer {
+            padding: 1rem;
+        }
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: #ffffff;
+            border-bottom: 1px solid #ddd;
+        }
+        .navbar a {
+            text-decoration: none;
+            color: #333;
+            margin: 0 0.5rem;
+        }
+        .category-list {
+            width: 200px;
+            padding: 1rem;
+            background: #ffffff;
+        }
+        .category-list ul {
+            list-style: none;
+            padding: 0;
+        }
+        .category-list li {
+            padding: 0.5rem 0;
+            border-bottom: 1px solid #eee;
+        }
+        .hero-section {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: #fff;
+            padding: 2rem;
+            margin: 1rem;
+            border-radius: 10px;
+        }
+        .hero-text h2 {
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+        }
+        .newsletter input[type="email"] {
+            padding: 0.5rem;
+            margin-right: 0.5rem;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+        .newsletter button {
+            padding: 0.5rem 1rem;
+            background-color: green;
+            color: white;
+            border: none;
+            border-radius: 4px;
+        }
+        .search-bar {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 1rem auto;
+            max-width: 600px;
+            background: #fff;
+            border-radius: 8px;
+            padding: 0.5rem;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.05);
+        }
+        .search-bar select,
+        .search-bar input {
+            padding: 0.5rem;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            margin-right: 0.5rem;
+        }
+        .search-bar button {
+            padding: 0.5rem 1rem;
+            background-color: #28a745;
+            color: white;
+            border: none;
+            border-radius: 4px;
+        }
+    </style>
 </head>
 <body>
-    <h1>Welcome to My Shop!</h1>
-    <p>This is a simple homepage for your e-commerce project.</p>
+    <header>
+        <div class="navbar">
+            <div class="logo">
+                <a href="/">Amar Mart & Grocery</a>
+            </div>
+            <nav>
+                <a href="#">Deals</a>
+                <a href="#">Home</a>
+                <a href="#">About</a>
+                <a href="#">Shop</a>
+                <a href="#">Vendors</a>
+                <a href="#">Contact</a>
+                <a href="#"><i class="fas fa-heart"></i> Wishlist</a>
+                <a href="#"><i class="fas fa-shopping-cart"></i> Cart</a>
+                <a href="#"><i class="fas fa-user"></i> Account</a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Search bar with category selector -->
+    <div class="search-bar">
+        <select>
+            <option value="all">All Categories</option>
+            <option value="milk">Milk & Dairies</option>
+            <option value="clothing">Clothing</option>
+            <option value="pets">Pet Foods</option>
+            <option value="baking">Baking Material</option>
+            <option value="fruits">Fresh Fruit</option>
+        </select>
+        <input type="text" placeholder="Search for items...">
+        <button type="submit">Search</button>
+    </div>
+
+    <div style="display: flex;">
+        <aside class="category-list">
+            <h4>Category</h4>
+            <ul>
+                <li>🥛 Milk & Dairies</li>
+                <li>👕 Clothing</li>
+                <li>🐶 Pet Foods</li>
+                <li>🍞 Baking material</li>
+                <li>🍏 Fresh Fruit</li>
+            </ul>
+        </aside>
+
+        <main style="flex: 1;">
+            <section class="hero-section">
+                <div class="hero-text">
+                    <h2>Don’t miss amazing grocery deals</h2>
+                    <p>Sign up for the daily newsletter</p>
+                    <div class="newsletter">
+                        <input type="email" placeholder="Your email address">
+                        <button>Subscribe</button>
+                    </div>
+                </div>
+                <div class="hero-image">
+                    <!-- ADD YOUR IMAGE HERE -->
+                    <img src="{% static 'asset/img/theme/grocery-banner.jpg' %}" alt="Grocery Deals" width="300">
+                    <!-- You can replace 'grocery-banner.png' with your image file name -->
+                </div>
+            </section>
+
+            {% block content %}
+            <!-- Dynamic content will be injected here -->
+            {% endblock %}
+        </main>
+    </div>
+
+    <footer>
+        <p style="text-align:center;">&copy; 2025 Amar Mart. All rights reserved.</p>
+    </footer>
+
+    <script src="/static/js/main.js"></script>
 </body>
 </html>
